@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// ÓÎÏ·´óÌü£¨ÓÎÏ·Ö÷²Ëµ¥£©
+/// æ¸¸æˆå¤§å…ï¼ˆæ¸¸æˆä¸»èœå•ï¼‰
 /// </summary>
 public class HandleLobbyWindow : MonoBehaviour
 {
@@ -19,15 +19,15 @@ public class HandleLobbyWindow : MonoBehaviour
 
     #region ClickEvts
     /// <summary>
-    /// Çå¿ÕÊı¾İ°´Å¥µã»÷ÊÂ¼ş
+    /// æ¸…ç©ºæ•°æ®æŒ‰é’®ç‚¹å‡»äº‹ä»¶
     /// </summary>
     public void OnBtnResetClicked()
     {
         PlayerPrefs.DeleteAll();
-        root.OpenTipsWindow("Êı¾İÇå³ıÍê³É");
+        root.OpenTipsWindow("æ•°æ®æ¸…é™¤å®Œæˆ");
     }
     /// <summary>
-    /// Á·Ï°°´Å¥µã»÷ÊÂ¼ş
+    /// ç»ƒä¹ æŒ‰é’®ç‚¹å‡»äº‹ä»¶
     /// </summary>
     public void OnBtnPracticeClicked()
     {
@@ -39,7 +39,7 @@ public class HandleLobbyWindow : MonoBehaviour
         }
         else
         {
-            root.OpenTipsWindow("½ğ±Ò²»×ã");
+            root.OpenTipsWindow("é‡‘å¸ä¸è¶³");
         }
     }
 
@@ -52,14 +52,14 @@ public class HandleLobbyWindow : MonoBehaviour
 
     #region ToolFunctions
     /// <summary>
-    /// Ë¢ĞÂ½ğ±ÒÊı¾İ
+    /// åˆ·æ–°é‡‘å¸æ•°æ®
     /// </summary>
     public void RefreshCoinData()
     {
         txtCoin.text = root.MCoin.ToString();
     }
     /// <summary>
-    /// Ë¢ĞÂÀúÊ·¼ÇÂ¼Êı¾İ
+    /// åˆ·æ–°å†å²è®°å½•æ•°æ®
     /// </summary>
     public void RefreshHistoryData()
     {
@@ -67,12 +67,12 @@ public class HandleLobbyWindow : MonoBehaviour
         if (mTime != "")
         {
             int mScore = root.MScore;
-            txtHistory.text = "×î¸ß»ı·Ö£º" + mScore + "·Ö \n\n¼ÇÂ¼Ê±¼ä£º" + mTime;
+            txtHistory.text = "æœ€é«˜ç§¯åˆ†ï¼š" + mScore + "åˆ† \n\nè®°å½•æ—¶é—´ï¼š" + mTime;
             txtHistory.alignment = TextAnchor.MiddleLeft;
         }
         else
         {
-            txtHistory.text = "ÔİÎŞÊı¾İ";
+            txtHistory.text = "æš‚æ— æ•°æ®";
         }
     }
     #endregion

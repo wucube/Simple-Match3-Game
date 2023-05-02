@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ÌáÊ¾´°¿Ú
+/// æç¤ºçª—å£
 /// </summary>
 public class HandleTipsWindow : MonoBehaviour
 {
@@ -20,29 +20,29 @@ public class HandleTipsWindow : MonoBehaviour
         tipsQue.Enqueue (tips);
     }
     /// <summary>
-    /// ÉèÖÃÌáÊ¾µ¯´°µÄÏÔÊ¾ÄÚÈİ
+    /// è®¾ç½®æç¤ºå¼¹çª—çš„æ˜¾ç¤ºå†…å®¹
     /// </summary>
     /// <param name="tips"></param>
     private void SetTips(string tips)
     {
-        //¸ù¾İÄÚÈİ³¤¶Èµ÷ÕûbgµÄ´óĞ¡ÏÔÊ¾
+        //æ ¹æ®å†…å®¹é•¿åº¦è°ƒæ•´bgçš„å¤§å°æ˜¾ç¤º
         int len = tips.Length;
         txtTips.text = tips;
         tipsBg.gameObject.SetActive(true);
         tipsBg.GetComponent<RectTransform>().sizeDelta = new Vector2(50 * len + 50, 100);
 
-        //¶¯»­²¥·Å¿ØÖÆ
+        //åŠ¨ç”»æ’­æ”¾æ§åˆ¶
         ani.Play("TipsWindowAni", 0, 0);
 
         RuntimeAnimatorController tor = ani.runtimeAnimatorController;
 
         AnimationClip[] clips = tor.animationClips;
 
-        StartCoroutine(AniPlayDone(clips[0].length)); //´«ÈëÔËĞĞÊ±¶¯»­µÄÊ±¼ä³¤¶È£¬µ¥Î»£ºÃë
+        StartCoroutine(AniPlayDone(clips[0].length)); //ä¼ å…¥è¿è¡Œæ—¶åŠ¨ç”»çš„æ—¶é—´é•¿åº¦ï¼Œå•ä½ï¼šç§’
     }
 
     /// <summary>
-    /// µ¯´°¶¯»­²¥ÍêºóµÄĞĞÎª
+    /// å¼¹çª—åŠ¨ç”»æ’­å®Œåçš„è¡Œä¸º
     /// </summary>
     /// <param name="sec"></param>
     /// <returns></returns>

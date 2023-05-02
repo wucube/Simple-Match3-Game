@@ -8,11 +8,11 @@ public class HandleFightWindow : MonoBehaviour
     public GameObject cubeItem;
     public Transform cubeRootTrans;
     /// <summary>
-    /// ·½¿éÕóÁĞµÄµ¥Î»ºá×ø±ê
+    /// æ–¹å—é˜µåˆ—çš„å•ä½æ¨ªåæ ‡
     /// </summary>
     public float xSpace;
     /// <summary>
-    /// ·½¿éÕóÁĞµÄµ¥Î»×İ×ø±ê
+    /// æ–¹å—é˜µåˆ—çš„å•ä½çºµåæ ‡
     /// </summary>
     public float ySpace;
     public float moveTime;
@@ -21,7 +21,7 @@ public class HandleFightWindow : MonoBehaviour
     public Text txtTimer;
     public Image bottomBarImg;
     /// <summary>
-    /// ÓÎÏ·¶Ô¾ÖÊ±¼ä
+    /// æ¸¸æˆå¯¹å±€æ—¶é—´
     /// </summary>
     public int fightTime;
 
@@ -32,7 +32,7 @@ public class HandleFightWindow : MonoBehaviour
     public Transform effectRootTrans;
 
     /// <summary>
-    /// ¼¼ÄÜ²ÛµÄ×ÜÖµ
+    /// æŠ€èƒ½æ§½çš„æ€»å€¼
     /// </summary>
     public int skillPointOp;
     public Image topBarImg;
@@ -44,36 +44,39 @@ public class HandleFightWindow : MonoBehaviour
 
     #region DataArea
     /// <summary>
-    /// ËùÓĞ¿ÉÏû³ıµÄ·½¿é¶ÔÏó
+    /// æ‰€æœ‰å¯æ¶ˆé™¤çš„æ–¹å—å¯¹è±¡
     /// </summary>
     private List<CubeItem> destroyList = new List<CubeItem>();
 
     /// <summary>
-    /// ·½¿éµÄ¶şÎ¬Êı×é
+    /// æ–¹å—çš„äºŒç»´æ•°ç»„
     /// </summary>
     private CubeItem[,] itemArr = new CubeItem[6, 6];
     private System.Random rd = null;
     private GameRoot root;
     /// <summary>
-    /// ·½¿éÊÇ·ñÕıÔÚÏû³ı
+    /// æ–¹å—æ˜¯å¦æ­£åœ¨æ¶ˆé™¤
     /// </summary>
     private bool IsProcess = false;
     /// <summary>
-    /// ÓÎÏ·ÊÇ·ñÕıÔÚÔËĞĞ
+    /// æ¸¸æˆæ˜¯å¦æ­£åœ¨è¿è¡Œ
     /// </summary>
     private bool isRun = false;
     private float deltaCount = 0;
     /// <summary>
-    /// ÓÎÍæÊ±¼ä
+    /// æ¸¸ç©æ—¶é—´
     /// </summary>
     private int mCount;
     private int mScore;
     /// <summary>
-    /// ¼¼ÄÜÔö³¤µãÊı
+    /// æŠ€èƒ½å¢é•¿ç‚¹æ•°
     /// </summary>
     public int mSkillPoint;
     #endregion
 
+    /// <summary>
+    /// åˆå§‹åŒ–
+    /// </summary>
     public void Init()
     {
         rd = new System.Random();
@@ -88,7 +91,7 @@ public class HandleFightWindow : MonoBehaviour
         isRun = true;
     }
     /// <summary>
-    /// ÉèÖÃ¼¼ÄÜ×´Ì¬ÌõµÄÀÛ»ıÖµ
+    /// è®¾ç½®æŠ€èƒ½çŠ¶æ€æ¡çš„ç´¯ç§¯å€¼
     /// </summary>
     /// <param name="point"></param>
     private void SetSkillBarVal(int point)
@@ -99,7 +102,7 @@ public class HandleFightWindow : MonoBehaviour
         topBarPoint.rectTransform.localPosition = new Vector3(dis, -67, 0);
     }
     /// <summary>
-    /// ÏÔÊ¾·ÖÊı±ä»¯
+    /// æ˜¾ç¤ºåˆ†æ•°å˜åŒ–
     /// </summary>
     /// <param name="mScore"></param>
     /// <param name="isJump"></param>
@@ -118,7 +121,7 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ¶¯»­²¥·ÅÍê³ÉºóµÄĞĞÎª
+    /// åŠ¨ç”»æ’­æ”¾å®Œæˆåçš„è¡Œä¸º
     /// </summary>
     /// <param name="sec"></param>
     /// <param name="num"></param>
@@ -129,27 +132,27 @@ public class HandleFightWindow : MonoBehaviour
         SetPicNum(num);
     }
     /// <summary>
-    /// ¸ù¾İÊı×Ö¼ÓÔØ¶ÔÓ¦µÄÊı×ÖÍ¼Æ¬
+    /// æ ¹æ®æ•°å­—åŠ è½½å¯¹åº”çš„æ•°å­—å›¾ç‰‡
     /// </summary>
-    /// <param name="num">´«ÈëµÄÊı×Ö</param>
+    /// <param name="num">ä¼ å…¥çš„æ•°å­—</param>
     private void SetPicNum(int num)
     {
-        //»ñÈ¡È«²¿×Ó¶ÔÏóµÄÍ¼Æ¬×é¼ş
+        //è·å–å…¨éƒ¨å­å¯¹è±¡çš„å›¾ç‰‡ç»„ä»¶
         Image[] images = new Image[5];
         for(int i = 0; i < numRootTrans.childCount; i++)
         {
             Transform trans = numRootTrans.GetChild(i);
             images[i] = trans.GetComponent<Image>();
         }
-        //½«´«ÈëµÄÊı×Ö×ªÎª×Ö·û´®Êı×é
+        //å°†ä¼ å…¥çš„æ•°å­—è½¬ä¸ºå­—ç¬¦ä¸²æ•°ç»„
         string numStr = num.ToString();
         int len = numStr.Length;
         string[] numArr = new string[len];
         for(int i = 0; i < len; i++)
         {
-            numArr[i] = numStr.Substring(i, 1);//¸ù¾İ´«ÈëÊı×ÖµÄ³¤¶È£¬½ØÈ¡×Ö·û´®
+            numArr[i] = numStr.Substring(i, 1);//æ ¹æ®ä¼ å…¥æ•°å­—çš„é•¿åº¦ï¼Œæˆªå–å­—ç¬¦ä¸²
         }
-        //¸ù¾İ×Ö·ûÊı×éµÄÖµ£¬¼ÓÔØ¶ÔÓ¦Êı×ÖÍ¼Æ¬£¬²¢ÏÔÊ¾³öÀ´¡£(±à¼­Æ÷Ê¹ÓÃlayout×é¼ş×Ô¶¯ÅÅ°æ)
+        //æ ¹æ®å­—ç¬¦æ•°ç»„çš„å€¼ï¼ŒåŠ è½½å¯¹åº”æ•°å­—å›¾ç‰‡ï¼Œå¹¶æ˜¾ç¤ºå‡ºæ¥ã€‚(ç¼–è¾‘å™¨ä½¿ç”¨layoutç»„ä»¶è‡ªåŠ¨æ’ç‰ˆ)
         for(int i = 0; i < images.Length; i++)
         {
             if (i < numArr.Length)
@@ -163,7 +166,7 @@ public class HandleFightWindow : MonoBehaviour
     }
     private void Update()
     {
-        //Ê±¼äÁ÷ÊÅ
+        //æ—¶é—´æµé€
         if (isRun)
         {
             deltaCount += Time.deltaTime;
@@ -182,7 +185,7 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ÉèÖÃÓÎÏ·Ê±¼äÌõµÄÖµ
+    /// è®¾ç½®æ¸¸æˆæ—¶é—´æ¡çš„å€¼
     /// </summary>
     /// <param name="time"></param>
     private void SetTimerBarVal(int time)
@@ -193,13 +196,13 @@ public class HandleFightWindow : MonoBehaviour
     }
     private void GameOver()
     {
-        //±£´æ·ÖÊıÊı¾İ
+        //ä¿å­˜åˆ†æ•°æ•°æ®
         root.UpdateRecordData(mScore);
-        //µ¯³öÓÎÏ·½áÊø²Ëµ¥
+        //å¼¹å‡ºæ¸¸æˆç»“æŸèœå•
         root.OpenMenuWindow(OpType.End);
     }
     /// <summary>
-    /// Éú³ÉÒ»¸ö6x6µÄĞ¡·½¿éÕóÁĞ
+    /// ç”Ÿæˆä¸€ä¸ª6x6çš„å°æ–¹å—é˜µåˆ—
     /// </summary>
     private void InitCubeData()
     {
@@ -215,7 +218,7 @@ public class HandleFightWindow : MonoBehaviour
         {
             for (int j = 0; j < 6; j++)
             {
-                //ÊµÀı»¯·½¿éÔ¤ÖÆÌå£¬ÉèÖÃ·½¿éµÄÎ»ÖÃ×ø±ê¸¸¶ÔÏó£¬Îª·½¿é½Å±¾Ìí¼Óµã»÷ÊÂ¼ş
+                //å®ä¾‹åŒ–æ–¹å—é¢„åˆ¶ä½“ï¼Œè®¾ç½®æ–¹å—çš„ä½ç½®åæ ‡çˆ¶å¯¹è±¡ï¼Œä¸ºæ–¹å—è„šæœ¬æ·»åŠ ç‚¹å‡»äº‹ä»¶
 
                 GameObject cube = Instantiate(cubeItem);
 
@@ -237,7 +240,7 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ÊÇ·ñÎªÓĞĞ§Êı×é
+    /// æ˜¯å¦ä¸ºæœ‰æ•ˆæ•°ç»„
     /// </summary>
     /// <param name="indexArr"></param>
     /// <returns></returns>
@@ -250,28 +253,28 @@ public class HandleFightWindow : MonoBehaviour
                 int val = indexArr[x, y];
 
                 int count = 0;
-                //Ò»¸ö·½¿éµÄÉÏÏÂ×óÓÒÊÇ·ñ´æÔÚÓë×Ô¼ºÏàÍ¬µÄÊı×Ö
+                //ä¸€ä¸ªæ–¹å—çš„ä¸Šä¸‹å·¦å³æ˜¯å¦å­˜åœ¨ä¸è‡ªå·±ç›¸åŒçš„æ•°å­—
 
-                //ÉÏ
+                //ä¸Š
                 if (y <= 4 && val == indexArr[x, y + 1])
                     count += 1;
-                //ÏÂ
+                //ä¸‹
                 if (y >= 1 && val == indexArr[x, y - 1])
                     count += 1;
-                //×ó
+                //å·¦
                 if (x >= 1 && val == indexArr[x - 1, y])
                     count += 1;
-                //ÓÒ
+                //å³
                 if (x <= 4 && val == indexArr[x + 1, y])
                     count += 1;
-                //´æÔÚÒ»×é¿ÉÏû³ı£¬¾ÍÊÇÓĞĞ§Êı¾İ
+                //å­˜åœ¨ä¸€ç»„å¯æ¶ˆé™¤ï¼Œå°±æ˜¯æœ‰æ•ˆæ•°æ®
                 if (count >= 2) return true;
             }
         }
         return false;
     }
     /// <summary>
-    /// ·½¿é¶ÔÏóµÄµã»÷ÊÂ¼ş
+    /// æ–¹å—å¯¹è±¡çš„ç‚¹å‡»äº‹ä»¶
     /// </summary>
     /// <param name="clickItem"></param>
     public void OnItemClicked(CubeItem clickItem)
@@ -279,14 +282,14 @@ public class HandleFightWindow : MonoBehaviour
         if (IsProcess || !isRun) return;
 
         IsProcess = true;
-        //¼ì²âµ±Ç°µã»÷µÄĞ¡¿éÊÇ·ñ¿ÉÒÔÏû³ı
+        //æ£€æµ‹å½“å‰ç‚¹å‡»çš„å°å—æ˜¯å¦å¯ä»¥æ¶ˆé™¤
         bool canDestroy = FindDestroyItems(clickItem);
 
         if (canDestroy)
         {
-            //Í³¼ÆÃ¿Ò»ÊúÅÅÏú»ÙµÄ¸öÊı
+            //ç»Ÿè®¡æ¯ä¸€ç«–æ’é”€æ¯çš„ä¸ªæ•°
             int[] createArr = new int[6];
-            //¿ÉÒÔ½øĞĞÏû³ı
+            //å¯ä»¥è¿›è¡Œæ¶ˆé™¤
             for (int i = 0; i < destroyList.Count; i++)
             {
                 CubeItem ci = destroyList[i];
@@ -295,15 +298,15 @@ public class HandleFightWindow : MonoBehaviour
                 Destroy(ci.gameObject);
             }
 
-            //»ı·Ö±ä»¯
+            //ç§¯åˆ†å˜åŒ–
             mScore += cubeScore * destroyList.Count;
             SetScoreNum(mScore);
 
-            //Ğ¡¿éÊı¾İÇ¨ÒÆ
+            //å°å—æ•°æ®è¿ç§»
             MoveResetCubeItem();
-            //¶¥²¿´´½¨ĞÂµÄCubeItem
+            //é¡¶éƒ¨åˆ›å»ºæ–°çš„CubeItem
             CreateNewCubeItem(createArr);
-            //¼¼ÄÜµãÉúĞ§¼ì²â
+            //æŠ€èƒ½ç‚¹ç”Ÿæ•ˆæ£€æµ‹
             if (mSkillPoint < skillPointOp)
             {
                 mSkillPoint += 1;
@@ -314,7 +317,7 @@ public class HandleFightWindow : MonoBehaviour
                 }
                 SetSkillBarVal(mSkillPoint);
             }
-            //¼ì²âÊı¾İµÄÓĞĞ§ĞÔ
+            //æ£€æµ‹æ•°æ®çš„æœ‰æ•ˆæ€§
             int[,] iconIndexArr = new int[6, 6];
             foreach (var item in itemArr)
                 iconIndexArr[item.xIndex, item.yIndex] = item.iconIndex;
@@ -323,19 +326,19 @@ public class HandleFightWindow : MonoBehaviour
                 isRun = false;
                 while (true)
                 {
-                    //ÖØĞÂÉú³ÉËæ»úÊı¾İ
+                    //é‡æ–°ç”Ÿæˆéšæœºæ•°æ®
                     iconIndexArr = GetRandomArr(6, 6);
                     if (IsValidData(iconIndexArr))
                         break;
                 }
-                //Ğ´ÈëÖØĞÂËæ»úÊı¾İ²¢±íÏÖËæ»ú¹ı³Ì
+                //å†™å…¥é‡æ–°éšæœºæ•°æ®å¹¶è¡¨ç°éšæœºè¿‡ç¨‹
                 StartCoroutine(PlayWaveAni(iconIndexArr));
             }
         }
         else
         {
             IsProcess = false;
-            //²»ĞĞ£¬¼õÉÙ¼¼ÄÜµã
+            //ä¸è¡Œï¼Œå‡å°‘æŠ€èƒ½ç‚¹
             mSkillPoint -= 2;
             if (mSkillPoint < 0)
                 mSkillPoint = 0;
@@ -343,7 +346,7 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// Ëæ»ú´´½¨¼¼ÄÜ·½¿é
+    /// éšæœºåˆ›å»ºæŠ€èƒ½æ–¹å—
     /// </summary>
     private void CreateRandomSkill()
     {
@@ -353,9 +356,9 @@ public class HandleFightWindow : MonoBehaviour
         itemArr[xPos,yPos].SetIconData(rdSkillIndex);
     }
     /// <summary>
-    /// ËùÓĞ·½¿éÖØĞÂÉú³ÉµÄ¶¯»­
+    /// æ‰€æœ‰æ–¹å—é‡æ–°ç”Ÿæˆçš„åŠ¨ç”»
     /// </summary>
-    /// <param name="iconIndexArr">·½¿éÍ¼Æ¬Ë÷ÒıµÄÊı×é</param>
+    /// <param name="iconIndexArr">æ–¹å—å›¾ç‰‡ç´¢å¼•çš„æ•°ç»„</param>
     /// <returns></returns>
     private IEnumerator PlayWaveAni(int[,] iconIndexArr)
     {
@@ -379,12 +382,12 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ÑÓ³ÙÍ¼Æ¬IconµÄ¼ÓÔØ
+    /// å»¶è¿Ÿå›¾ç‰‡Iconçš„åŠ è½½
     /// </summary>
     /// <param name="item"></param>
     /// <param name="iconIndexArr"></param>
     /// <param name="delay"></param>
-    /// <param name="isLast">ÊÇ·ñÎª×îºóÉú³ÉµÄ·½¿é</param>
+    /// <param name="isLast">æ˜¯å¦ä¸ºæœ€åç”Ÿæˆçš„æ–¹å—</param>
     /// <returns></returns>
     private IEnumerator DelayIconSet(CubeItem item,int[,] iconIndexArr,float delay,bool isLast)
     {
@@ -392,29 +395,29 @@ public class HandleFightWindow : MonoBehaviour
         item.SetIconData(iconIndexArr[item.xIndex, item.yIndex]);
         if (isLast)
         {
-            root.OpenTipsWindow("ÖØĞÂËæ»ú·½¿éÍê³É");
+            root.OpenTipsWindow("é‡æ–°éšæœºæ–¹å—å®Œæˆ");
             isRun = true;
         }
     }
     
     /// <summary>
-    /// ¶¥²¿´´½¨ĞÂµÄ·½¿é
+    /// é¡¶éƒ¨åˆ›å»ºæ–°çš„æ–¹å—
     /// </summary>
     /// <param name="createArr"></param>
     private void CreateNewCubeItem(int[] createArr)
     {
         for(int i = 0; i < createArr.Length; i++)
         {
-            //·½¿éÕóÁĞÃ¿ÊúÅÅÒª´´½¨µÄ¸öÊı
+            //æ–¹å—é˜µåˆ—æ¯ç«–æ’è¦åˆ›å»ºçš„ä¸ªæ•°
             int count = createArr[i];
-            //´ÓµÚÒ»¸ö¿ªÊ¼´´½¨
+            //ä»ç¬¬ä¸€ä¸ªå¼€å§‹åˆ›å»º
             for (int j = 1; j <= count; j++)
             {
                 GameObject cube = Instantiate(cubeItem);
                 CubeItem item = cube.GetComponent<CubeItem>();
                 RectTransform rectTrans = item.GetComponent<RectTransform>();
                 item.xIndex = i;
-                int yIndex = 5 - count + j; //ĞÂ½¨·½¿éµÄ×îÖÕÎ»ÖÃµÄYÖµ£¬¾ÍÊÇÊ£Óà·½¿éÆ«ÒÆºóYÖµ+1
+                int yIndex = 5 - count + j; //æ–°å»ºæ–¹å—çš„æœ€ç»ˆä½ç½®çš„Yå€¼ï¼Œå°±æ˜¯å‰©ä½™æ–¹å—åç§»åYå€¼+1
                 item.yIndex = yIndex;
                 int iconIndex = rd.Next(0, 5);
                 item.SetIconData(iconIndex);
@@ -425,11 +428,11 @@ public class HandleFightWindow : MonoBehaviour
                 //rectTrans.localPosition = new Vector3(i * xSpace, yIndex * ySpace, 0);
                 item.MovePosInTime(moveTime,from,to);
 
-                //Ìí¼ÓÊÂ¼ş¼àÌı
+                //æ·»åŠ äº‹ä»¶ç›‘å¬
                 Button btn = item.GetComponent<Button>();
                 btn.onClick.AddListener(() =>OnItemClicked(item));
 
-                //¸üĞÂitemArrÊı¾İ
+                //æ›´æ–°itemArræ•°æ®
                 itemArr[i, yIndex] = item;
             }
         }
@@ -442,19 +445,19 @@ public class HandleFightWindow : MonoBehaviour
     }
     
     /// <summary>
-    /// ÒÆ¶¯·½¿é
+    /// ç§»åŠ¨æ–¹å—
     /// </summary>
     private void MoveResetCubeItem()
     {
         int[,] offsetArr = new int[6, 6];
 
-        //Í³¼Æ·½¿éÒªÏòÏÂÆ«ÒÆµÄÁ¿
+        //ç»Ÿè®¡æ–¹å—è¦å‘ä¸‹åç§»çš„é‡
         for(int i = 0; i < destroyList.Count; i++)
         {
             CubeItem item = destroyList[i];
             for (int y = 0; y < 6; y++)
             {
-                //ÔÚ¿ÉÏû³ı·½¿éÖ®ÉÏµÄ·½¿é¶¼ÒªÍùÏÂÆ«ÒÆ
+                //åœ¨å¯æ¶ˆé™¤æ–¹å—ä¹‹ä¸Šçš„æ–¹å—éƒ½è¦å¾€ä¸‹åç§»
                 if (y > item.yIndex)
                 {
                     offsetArr[item.xIndex, y] += 1;
@@ -470,17 +473,17 @@ public class HandleFightWindow : MonoBehaviour
 
                 if (item != null && offsetArr[x, y] != 0)
                 {
-                    //±ä»¯Î»ÖÃÊı¾İ
+                    //å˜åŒ–ä½ç½®æ•°æ®
                     RectTransform rectTrans = item.GetComponent<RectTransform>();
                     Vector3 pos = rectTrans.localPosition;
                     float posY = pos.y - offsetArr[x, y] * ySpace;
                     //rectTrans.localPosition = new Vector3(pos.x, offsetY, 0);
                     item.MovePosInTime(moveTime,pos, new Vector3(pos.x, posY, 0));
 
-                    //¸üĞÂË÷Òı
+                    //æ›´æ–°ç´¢å¼•
                     item.yIndex -= offsetArr[x, y];
 
-                    //¸üĞÂitemArrÀïµÄÊı¾İ
+                    //æ›´æ–°itemArré‡Œçš„æ•°æ®
                     itemArr[x, y] = null;
                     itemArr[item.xIndex, item.yIndex] = item;  
                 }
@@ -489,46 +492,46 @@ public class HandleFightWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// ²éÕÒÏàÁÚ·½¿éÄÜ·ñÏû³ı
+    /// æŸ¥æ‰¾ç›¸é‚»æ–¹å—èƒ½å¦æ¶ˆé™¤
     /// </summary>
-    /// <param name="rootItem">²éÕÒµÄ¸ù½Úµã·½¿é</param>
+    /// <param name="rootItem">æŸ¥æ‰¾çš„æ ¹èŠ‚ç‚¹æ–¹å—</param>
     /// <returns></returns>
     private bool FindDestroyItems( CubeItem rootItem)
     {
         destroyList.Clear();
         destroyList.Add(rootItem);
 
-        //ÊÇ·ñµã»÷µ½¼¼ÄÜItemCube
+        //æ˜¯å¦ç‚¹å‡»åˆ°æŠ€èƒ½ItemCube
         if(rootItem.iconIndex==5||rootItem.iconIndex == 6)
         {
             SelectBySkill(rootItem);
             return true;
         }
 
-        //´æ·ÅÃ¿ÂÖ²éÕÒµÄ¸ù½Úµã
+        //å­˜æ”¾æ¯è½®æŸ¥æ‰¾çš„æ ¹èŠ‚ç‚¹
         List<CubeItem> rootList = new List<CubeItem> ();
         rootList.Add(rootItem);
 
         while(rootList.Count > 0)
         {
-            //²éÕÒµ½µÄ¿ÉÏû³ı·½¿é
+            //æŸ¥æ‰¾åˆ°çš„å¯æ¶ˆé™¤æ–¹å—
             List<CubeItem> findList = new List<CubeItem>();
             for (int i = 0; i < rootList.Count; i++)
             {
                 CubeItem item = rootList[i];
 
-                //ÉÏ
+                //ä¸Š
                 if (item.yIndex <= 4)
                 {
                     CubeItem findItem = itemArr[item.xIndex, item.yIndex + 1];
-                    //ÅĞ¶ÏÊÇ·ñÎªÍ¬Ò»ÀàĞÍµÄCubeItem
+                    //åˆ¤æ–­æ˜¯å¦ä¸ºåŒä¸€ç±»å‹çš„CubeItem
                     if (findItem.IsSameType(item)&&!IsSelected(findItem))
                     {
                         destroyList.Add(findItem);
                         findList.Add(findItem);
                     }
                 }
-                //ÏÂ
+                //ä¸‹
                 if (item.yIndex >= 1)
                 {
                     CubeItem findItem = itemArr[item.xIndex, item.yIndex - 1];
@@ -538,7 +541,7 @@ public class HandleFightWindow : MonoBehaviour
                         findList.Add(findItem);
                     }
                 }
-                //×ó
+                //å·¦
                 if (item.xIndex >= 1)
                 {
                     CubeItem findItem = itemArr[item.xIndex - 1, item.yIndex];
@@ -548,7 +551,7 @@ public class HandleFightWindow : MonoBehaviour
                         findList.Add(findItem);
                     }
                 }
-                //ÓÒ
+                //å³
                 if (item.xIndex <= 4)
                 {
                     CubeItem findItem = itemArr[item.xIndex + 1, item.yIndex];
@@ -559,15 +562,15 @@ public class HandleFightWindow : MonoBehaviour
                     } 
                 }
             }
-            //¸üĞÂ²éÕÒ¸ù½Úµã
+            //æ›´æ–°æŸ¥æ‰¾æ ¹èŠ‚ç‚¹
             rootList = findList;
         }
         if (destroyList.Count >= 3)
         {
-            //ÌØĞ§²¥·Å
+            //ç‰¹æ•ˆæ’­æ”¾
             for (int i = 0; i < destroyList.Count; i++)
             {
-                //CubeItemÎ»ÖÃÓëClaenÎïÌåÏàÍ¬
+                //CubeItemä½ç½®ä¸Claenç‰©ä½“ç›¸åŒ
                 CubeItem ci = destroyList[i];
                 Vector3 pos = ci.GetComponent<RectTransform>().localPosition;
                 GameObject clean = Instantiate(cleanEffect);
@@ -575,7 +578,7 @@ public class HandleFightWindow : MonoBehaviour
                 clean.GetComponent<RectTransform>().localPosition = pos;
 
             }
-            //ÒôĞ§²¥·Å
+            //éŸ³æ•ˆæ’­æ”¾
             int index = rd.Next(1, 9);
             root.PlayEffectAudio("s_" + index);
 
@@ -585,7 +588,7 @@ public class HandleFightWindow : MonoBehaviour
         else return false;
     }
     /// <summary>
-    /// Ë÷ÒıÊÇ·ñºÏ·¨
+    /// ç´¢å¼•æ˜¯å¦åˆæ³•
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -598,7 +601,7 @@ public class HandleFightWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// µã»÷¼¼ÄÜ·½¿é
+    /// ç‚¹å‡»æŠ€èƒ½æ–¹å—
     /// </summary>
     /// <param name="item"></param>
     private void SelectBySkill(CubeItem item)
@@ -608,63 +611,63 @@ public class HandleFightWindow : MonoBehaviour
         switch (item.iconIndex)
         {
             case 5:
-                //Õ¨µ¯Ïû³ı
-                //ÉÏ
+                //ç‚¸å¼¹æ¶ˆé™¤
+                //ä¸Š
                 if (IsLegal(x, y + 1))
                     destroyList.Add(itemArr[x, y + 1]);
-                //ÏÂ
+                //ä¸‹
                 if (IsLegal(x, y -1))
                     destroyList.Add(itemArr[x, y - 1]);
-                //×ó
+                //å·¦
                 if (IsLegal(x-1, y))
                     destroyList.Add(itemArr[x - 1, y]);
-                //ÓÒ
+                //å³
                 if (IsLegal(x+1, y))
                     destroyList.Add(itemArr[x + 1, y]);
-                //×óÉÏ
+                //å·¦ä¸Š
                 if (IsLegal(x-1, y + 1))
                     destroyList.Add(itemArr[x - 1, y + 1]);
-                //ÓÒÉÏ
+                //å³ä¸Š
                 if (IsLegal(x+1, y + 1))
                     destroyList.Add(itemArr[x + 1, y + 1]);
-                //×óÏÂ
+                //å·¦ä¸‹
                 if (IsLegal(x-1, y - 1))
                     destroyList.Add(itemArr[x - 1, y - 1]);
-                //ÓÒÏÂ
+                //å³ä¸‹
                 if (IsLegal(x+1, y - 1))
                     destroyList.Add(itemArr[x + 1, y - 1]);
 
-                //effect ²¥·Å
+                //effect æ’­æ”¾
                 for (int i = 0; i < destroyList.Count; i++)
                 {
                     CubeItem ci = destroyList[i];
                     Vector3 pos = ci.GetComponent<RectTransform>().localPosition;
 
-                    //ÔÚ·½¿éÎ»ÖÃ´´½¨±¬Õ¨ÌØĞ§
+                    //åœ¨æ–¹å—ä½ç½®åˆ›å»ºçˆ†ç‚¸ç‰¹æ•ˆ
                     GameObject bomb = Instantiate(bombEffect);
                     bomb.transform.SetParent(effectRootTrans);
                     bomb.GetComponent<RectTransform>().localPosition = pos;
                 }
-                //audio ²¥·Å
+                //audio æ’­æ”¾
                 root.PlayEffectAudio("bomb");
                 break;
             case 6:
-                //ÉÁµçÏû³ı
+                //é—ªç”µæ¶ˆé™¤
                 for (int i = 0; i < 6; i++)
                 {
-                    //ÊúÅÅ
+                    //ç«–æ’
                     if(i!=y) destroyList.Add(itemArr[x, i]);
 
-                    //ºáÅÅ
+                    //æ¨ªæ’
                     if(i!=x) destroyList.Add(itemArr[i, y]);
 
                 }
-                //´´½¨ÊúÅÅÏû³ıÌØĞ§
+                //åˆ›å»ºç«–æ’æ¶ˆé™¤ç‰¹æ•ˆ
                 GameObject lightH = Instantiate(lightingHEffect);
                 lightH.transform.SetParent(effectRootTrans);
                 lightH.GetComponent<RectTransform>().localPosition = new Vector3(447,ySpace*y,0);
 
-                //´´½¨ºá°æÏû³ıÌØĞ§
+                //åˆ›å»ºæ¨ªç‰ˆæ¶ˆé™¤ç‰¹æ•ˆ
                 GameObject lightV = Instantiate(lightingVEffect);
                 lightV.transform.SetParent(effectRootTrans);
                 lightV.GetComponent<RectTransform>().localPosition = new Vector3(xSpace * x, 456, 0);
@@ -675,7 +678,7 @@ public class HandleFightWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ÊÇ·ñÎªÒÑÑ¡ÖĞµÄ·½¿é
+    /// æ˜¯å¦ä¸ºå·²é€‰ä¸­çš„æ–¹å—
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
@@ -690,10 +693,10 @@ public class HandleFightWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// Éú³ÉËæ»úµÄ¶şÎ¬Êı×é£¬Êı×éÔªËØÖµÔÚ0~5Ö®¼ä
+    /// ç”Ÿæˆéšæœºçš„äºŒç»´æ•°ç»„ï¼Œæ•°ç»„å…ƒç´ å€¼åœ¨0~5ä¹‹é—´
     /// </summary>
-    /// <param name="width">Êı×éµÄÁĞ</param>
-    /// <param name="height">Êı×éµÄĞĞ</param>
+    /// <param name="width">æ•°ç»„çš„åˆ—</param>
+    /// <param name="height">æ•°ç»„çš„è¡Œ</param>
     /// <returns></returns>
     private int[,] GetRandomArr(int width,int height)
     {
@@ -714,10 +717,17 @@ public class HandleFightWindow : MonoBehaviour
         isRun = false;
         root.OpenMenuWindow(OpType.Pause);
     }
+    /// <summary>
+    /// è®¾ç½®æ¶ˆé™¤æ­£åœ¨è¿è¡Œ
+    /// </summary>
     public void SetFightRun()
     {
         isRun = true;
     }
+    
+    /// <summary>
+    /// æ¸…é™¤æ¶ˆé™¤æ•°æ®
+    /// </summary>
     public void ClearFight()
     {
         rd = null;

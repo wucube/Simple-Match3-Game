@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// µã»÷µÄ²Ù×÷ÀàĞÍ
+/// ç‚¹å‡»çš„æ“ä½œç±»å‹
 /// </summary>
 public enum OpType
 {
@@ -14,7 +14,7 @@ public enum OpType
     End
 }
 /// <summary>
-/// ÓÎÏ·²Ëµ¥
+/// æ¸¸æˆèœå•
 /// </summary>
 public class HandleMenuWindow : MonoBehaviour
 {
@@ -56,7 +56,7 @@ public class HandleMenuWindow : MonoBehaviour
         }
     }
     /// <summary>
-    /// ÏÔÊ¾µ±¾ÖµÃ·Ö
+    /// æ˜¾ç¤ºå½“å±€å¾—åˆ†
     /// </summary>
     private void SetScoreData()
     {
@@ -68,7 +68,7 @@ public class HandleMenuWindow : MonoBehaviour
             imgRecord.gameObject.SetActive(false);
     }
     /// <summary>
-    /// ¼Ì³Ğ
+    /// ç»§æ‰¿
     /// </summary>
     public void OnBtnContinueClicked()
     {
@@ -79,7 +79,7 @@ public class HandleMenuWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
     /// <summary>
-    /// ·µ»Ø´óÌü
+    /// è¿”å›å¤§å…
     /// </summary>
     public void OnBtnBackLobbyClicked()
     {
@@ -88,7 +88,7 @@ public class HandleMenuWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
     /// <summary>
-    /// ²é¿´Ïû³ı¹æÔò
+    /// æŸ¥çœ‹æ¶ˆé™¤è§„åˆ™
     /// </summary>
     public void OnBtnRuleClicked()
     {
@@ -97,7 +97,7 @@ public class HandleMenuWindow : MonoBehaviour
         pauseRoot.gameObject.SetActive(false);
     }
     /// <summary>
-    /// ÔÙÀ´Ò»´Î°´Å¥ÊÂ¼ş
+    /// å†æ¥ä¸€æ¬¡æŒ‰é’®äº‹ä»¶
     /// </summary>
     public void OnBtnAgainClicked()
     {
@@ -106,10 +106,10 @@ public class HandleMenuWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    //´ıÍê³É
+    //å¾…å®Œæˆ
     public void OnBtnShareClicked()
     {
         root.PlayUIClick();
-        root.OpenTipsWindow("¿ª·¢ÖĞ....");
+        root.OpenTipsWindow("å¼€å‘ä¸­....");
     }
 }

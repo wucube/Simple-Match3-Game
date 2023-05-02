@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ×Ô¶¯Ïú»Ù
+/// è‡ªåŠ¨é”€æ¯
 /// </summary>
 public class AutoDestroy : MonoBehaviour
 {

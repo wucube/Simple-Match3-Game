@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// ÓÎÏ·¸ù½Úµã
+/// æ¸¸æˆæ ¹èŠ‚ç‚¹
 /// </summary>
 public class GameRoot : MonoBehaviour
 {
@@ -28,27 +28,27 @@ public class GameRoot : MonoBehaviour
 
     #region DataArea
     /// <summary>
-    /// Íæ¼ÒÓµÓĞ½ğ±ÒÊıÁ¿
+    /// ç©å®¶æ‹¥æœ‰é‡‘å¸æ•°é‡
     /// </summary>
     private int mCoin = 0;
     public int MCoin => mCoin;
     /// <summary>
-    /// Íæ¼ÒÀúÊ·×î¸ß·Ö
+    /// ç©å®¶å†å²æœ€é«˜åˆ†
     /// </summary>
     private int mScore = 0;
     public int MScore => mScore;
     /// <summary>
-    /// ×î¸ß·Ö´´½¨µÄÊ±¼ä
+    /// æœ€é«˜åˆ†åˆ›å»ºçš„æ—¶é—´
     /// </summary>
     private string mTime = "";
     public string MTime => mTime;
     /// <summary>
-    /// µ±Ç°¾Ö»ñµÃ·ÖÀà
+    /// å½“å‰å±€è·å¾—åˆ†ç±»
     /// </summary>
     private int mCurScore = 0;
     public int MCurScore => mCurScore;
     /// <summary>
-    /// ÊÇ·ñÎªĞÂ¼ÍÂ¼
+    /// æ˜¯å¦ä¸ºæ–°çºªå½•
     /// </summary>
     private bool isNewRecord = false;
     public bool IsNewRecord => isNewRecord;
@@ -57,13 +57,13 @@ public class GameRoot : MonoBehaviour
     void Start()
     {
         Instance = this;
-        OpenTipsWindow("ÓÎÏ·Æô¶¯³É¹¦");
+        OpenTipsWindow("æ¸¸æˆå¯åŠ¨æˆåŠŸ");
         InitGameData();
         OpenLobbyWindow();
 
     }
     /// <summary>
-    /// ´ò¿ª´óÌü½çÃæ(ÓÎÏ·²Ëµ¥½çÃæ)
+    /// æ‰“å¼€å¤§å…ç•Œé¢(æ¸¸æˆèœå•ç•Œé¢)
     /// </summary>
     private void OpenLobbyWindow()
     {
@@ -76,7 +76,7 @@ public class GameRoot : MonoBehaviour
         tipsWin.gameObject.SetActive(true);
     }
     /// <summary>
-    /// ´ò¿ªÏû³ı½çÃæ
+    /// æ‰“å¼€æ¶ˆé™¤ç•Œé¢
     /// </summary>
     public void OpenFightWindow()
     {
@@ -85,7 +85,7 @@ public class GameRoot : MonoBehaviour
         PlayFightBG();
     }
     /// <summary>
-    /// ´ò¿ª²Ëµ¥½çÃæ
+    /// æ‰“å¼€èœå•ç•Œé¢
     /// </summary>
     /// <param name="tp"></param>
     public void OpenMenuWindow(OpType tp)
@@ -94,37 +94,37 @@ public class GameRoot : MonoBehaviour
         menuWin.Init(tp);
     }
     /// <summary>
-    /// ³õÊ¼»¯ÓÎÏ·Êı¾İ
+    /// åˆå§‹åŒ–æ¸¸æˆæ•°æ®
     /// </summary>
     private void InitGameData()
     {
-        //ÊÇ·ñÊ×´ÎµÇÂ¼
+        //æ˜¯å¦é¦–æ¬¡ç™»å½•
         if (PlayerPrefs.HasKey("isFirstLogin"))
         {
-            //»ñÈ¡´æ´¢µÄÊı¾İ
-            //½ğ±Ò
+            //è·å–å­˜å‚¨çš„æ•°æ®
+            //é‡‘å¸
             mCoin = PlayerPrefs.GetInt("coin");
-            //ÀúÊ·³É¼¨
+            //å†å²æˆç»©
             mScore = PlayerPrefs.GetInt("score");
-            //ÀúÊ·³É¼¨´´½¨Ê±¼ä
+            //å†å²æˆç»©åˆ›å»ºæ—¶é—´
             mTime = PlayerPrefs.GetString("time");
         }
         else
         {
-            //ÉèÖÃÊ×´ÎµÇÂ¼Key
+            //è®¾ç½®é¦–æ¬¡ç™»å½•Key
             PlayerPrefs.SetString("isFirstLogin", "Yes");
-            //ÉèÖÃÄ¬ÈÏÊı¾İ
+            //è®¾ç½®é»˜è®¤æ•°æ®
             mCoin = 8888;
             mScore = 0;
             mTime = "";
             PlayerPrefs.SetInt("coin", mCoin);
             PlayerPrefs.SetInt("score", mScore);
             PlayerPrefs.SetString("time", mTime);
-            OpenTipsWindow("Ê×´ÎµÇÂ¼ÔùËÍ8888½ğ±Ò");
+            OpenTipsWindow("é¦–æ¬¡ç™»å½•èµ é€8888é‡‘å¸");
         }
     }
     /// <summary>
-    /// ¸üĞÂÍæ¼Ò¼ÇÂ¼Êı¾İ
+    /// æ›´æ–°ç©å®¶è®°å½•æ•°æ®
     /// </summary>
     /// <param name="score"></param>
     public void UpdateRecordData(int score)
@@ -155,7 +155,7 @@ public class GameRoot : MonoBehaviour
         lobbyWin.RefreshCoinData();
     }
 
-    #region AudioÏà¹Ø
+    #region Audioç›¸å…³
     public void PlayLobbyBG()
     {
         if (bgAudio.clip == null || bgAudio.clip.name != lobbyBgClip.name)

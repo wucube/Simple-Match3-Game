@@ -4,23 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ·½¿é¶ÔÏó½Å±¾
+/// æ–¹å—å¯¹è±¡è„šæœ¬
 /// </summary>
 public class CubeItem : MonoBehaviour
 {
     public RectTransform rectTrans;
     public Image imgIcon;
 
-    //·½¿éÕóÁĞË÷Òı
+    //æ–¹å—é˜µåˆ—ç´¢å¼•
     public int xIndex;
     public int yIndex;
-    //Í¼Æ¬×ÊÔ´Ë÷Òı
+    //å›¾ç‰‡èµ„æºç´¢å¼•
     public int iconIndex;
 
     /// <summary>
-    /// ·½¿é¼ÓÔØÍ¼Æ¬Ô´
+    /// æ–¹å—åŠ è½½å›¾ç‰‡æº
     /// </summary>
-    /// <param name="index">Í¼Æ¬×ÊÔ´µÄË÷Òı</param>
+    /// <param name="index">å›¾ç‰‡èµ„æºçš„ç´¢å¼•</param>
     public void SetIconData(int index)
     {
         iconIndex = index;
@@ -29,9 +29,9 @@ public class CubeItem : MonoBehaviour
     }
 
     /// <summary>
-    /// ·½¿éÊÇ·ñÏàÍ¬£¬¸ù¾İ·½¿éÊ¹ÓÃµÄÍ¼Æ¬Ô´ÅĞ¶Ï
+    /// æ–¹å—æ˜¯å¦ç›¸åŒï¼Œæ ¹æ®æ–¹å—ä½¿ç”¨çš„å›¾ç‰‡æºåˆ¤æ–­
     /// </summary>
-    /// <param name="item">·½¿é¶ÔÏó</param>
+    /// <param name="item">æ–¹å—å¯¹è±¡</param>
     /// <returns></returns>
     public bool IsSameType(CubeItem item)
     {
@@ -47,35 +47,35 @@ public class CubeItem : MonoBehaviour
         else return false;
     }
 
-    #region ¶¯»­¿ØÖÆÏà¹Ø
+    #region åŠ¨ç”»æ§åˆ¶ç›¸å…³
     /// <summary>
-    /// ÊÇ·ñÒÆ¶¯
+    /// æ˜¯å¦ç§»åŠ¨
     /// </summary>
     private bool isMove = false;
     /// <summary>
-    /// ÒÆ¶¯Ê±¼ä
+    /// ç§»åŠ¨æ—¶é—´
     /// </summary>
     private float moveTime = 0;
     /// <summary>
-    /// ÒÆ¶¯ËÙ¶ÈÏòÁ¿
+    /// ç§»åŠ¨é€Ÿåº¦å‘é‡
     /// </summary>
     private Vector3 moveVel = Vector3.zero;
 
     /// <summary>
-    /// Ä¿±êÎ»ÖÃ
+    /// ç›®æ ‡ä½ç½®
     /// </summary>
     private Vector3 targetPos = Vector3.zero;
 
     /// <summary>
-    /// ÒÆ¶¯Ê±¼ä¼ÆÊı
+    /// ç§»åŠ¨æ—¶é—´è®¡æ•°
     /// </summary>
     private float countTime = 0;
     /// <summary>
-    /// ÔÚÖ¸¶¨Ê±¼äÄÚÒÆ¶¯
+    /// åœ¨æŒ‡å®šæ—¶é—´å†…ç§»åŠ¨çš„é€Ÿåº¦
     /// </summary>
-    /// <param name="time">ÒÆ¶¯Ê±¼ä</param>
-    /// <param name="from">ÆğµãÎ»ÖÃ</param>
-    /// <param name="to">Ä¿±êÎ»ÖÃ</param>
+    /// <param name="time">ç§»åŠ¨æ—¶é—´</param>
+    /// <param name="from">èµ·ç‚¹ä½ç½®</param>
+    /// <param name="to">ç›®æ ‡ä½ç½®</param>
     public void MovePosInTime(float time, Vector3 from, Vector3 to)
     {
         moveTime = time;
@@ -99,6 +99,7 @@ public class CubeItem : MonoBehaviour
             rectTrans.localPosition += delt * moveVel;
 
             countTime += delt;
+            
             if (countTime >= moveTime)
             {
                 rectTrans.localPosition = targetPos;
@@ -113,6 +114,4 @@ public class CubeItem : MonoBehaviour
         }
     }
     #endregion
-
-
 }
